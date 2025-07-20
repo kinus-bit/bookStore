@@ -8,4 +8,4 @@ router.get('/all', getAllBooks);
 router.put('/:id' , updateBook);
 router.delete('/:id' , deleteBook);
 
-
+module.exports = router;
