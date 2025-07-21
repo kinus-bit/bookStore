@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="flex justify-between items-center p-4 shadow-md">
       <h1 className="text-xl font-bold">Bookstore</h1>
       <div className="space-x-2">
-        <Button>Books</Button>
+        <Button>Book</Button>
         <Button>Cart</Button>
       </div>
     </nav>
