@@ -18,6 +18,8 @@ exports.protect = (req, res, next) => {
     } catch (error) {
         return res.status(403).json({ message: "invalid token"});
     }
+    console.log("Auth header:", auth);
+    
 };
 
 // Checks role
