@@ -23,7 +23,7 @@ const BookForm = ({ book, onSave, onClose }) => {
         category: book.category || '',
         stock: book.stock?.toString() || '',
         description: book.description || '',
-        imageUrl: book.imageUrl || ''
+        imageUrl: book.imageUrl || 'https://www.forexgdp.com/wp-content/uploads/2022/06/15-Books-Every-Forex-Trader-Should-Read-12.jpg'
       });
     }
   }, [book]);

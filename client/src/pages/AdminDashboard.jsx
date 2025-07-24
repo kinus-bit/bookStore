@@ -21,6 +21,8 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
   const [viewMode, setViewMode] = useState('grid');
   const [loading, setLoading] = useState(true);
+  const [selectedBook, setSelectedBook] = useState(null);
+const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     loadData();
@@ -115,6 +117,12 @@ const AdminDashboard = () => {
       }
     }
   };
+
+  const handleViewBook = (book) => {
+  setSelectedBook(book);
+  setShowModal(true);
+};
+
 
   const filteredBooks = books.filter(book =>
     book.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -361,10 +369,12 @@ const AdminDashboard = () => {
             {filteredBooks.map(book => (
               <div key={book._id} className="relative group">
                 <BookCard
-                  book={book}
-                  viewMode={viewMode}
-                  onAddToCart={() => {}} // Admin doesn't need cart functionality
-                />
+           book={book}
+           viewMode={viewMode}
+           onAddToCart={() => {}}
+           onView={() => handleViewBook(book)}
+           />
+
                 <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   <div className="flex space-x-1">
                     <button
@@ -383,6 +393,26 @@ const AdminDashboard = () => {
                 </div>
               </div>
             ))}
+            {showModal && selectedBook && (
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div className="bg-white rounded-lg p-4 max-w-sm w-full">
+      <img
+        src={selectedBook.imageUrl}
+        alt={selectedBook.title}
+        className="w-full h-auto rounded"
+        referrerPolicy="no-referrer"
+      />
+      <h2 className="text-lg font-semibold mt-2">{selectedBook.title}</h2>
+      <button
+        onClick={() => setShowModal(false)}
+        className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
           </div>
         </div>
       )}

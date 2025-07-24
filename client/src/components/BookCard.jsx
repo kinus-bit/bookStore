@@ -1,7 +1,7 @@
 import React from 'react';
 import { Star, ShoppingCart, Eye } from 'lucide-react';
 
-const BookCard = ({ book, viewMode = 'grid', onAddToCart }) => {
+const BookCard = ({ book, viewMode = 'grid', onAddToCart,onView}) => {
   const renderStars = (rating) => {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
@@ -16,16 +16,24 @@ const BookCard = ({ book, viewMode = 'grid', onAddToCart }) => {
       />
     ));
   };
+  console.log("Image URL:", book.imageUrl);
+
+
+
 
   if (viewMode === 'list') {
     return (
       <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
         <div className="flex items-center space-x-6">
           <img
-            src={book.imageUrl}
-            alt={book.title}
-            className="w-20 h-28 object-cover rounded-lg"
-          />
+  src={book.imageUrl || "/fallback.jpg"}
+  alt={book.title || "Book cover"}
+  onError={(e) => {
+    e.target.src = "/fallback.jpg"; // Replace with default if image fails
+  }}
+  className="w-20 h-28 object-cover rounded-lg"
+/>
+          
           
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between">
@@ -71,14 +79,20 @@ const BookCard = ({ book, viewMode = 'grid', onAddToCart }) => {
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-200 group">
       <div className="relative overflow-hidden">
         <img
-          src={book.imageUrl}
-          alt={book.title}
-          className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-200"
-        />
+  src={book.imageUrl || "/fallback.jpg"}
+  alt={book.title || "Book Cover"}
+  onError={(e) => (e.target.src = "/fallback.jpg")}
+  className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-200"
+/>
+
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-200 flex items-center justify-center">
-          <button className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-lg">
-            <Eye className="h-4 w-4" />
-          </button>
+          <button
+  onClick={onView}
+  className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-white text-gray-800 px-3 py-2 rounded-lg shadow-lg"
+>
+  <Eye className="h-4 w-4" />
+</button>
+
         </div>
       </div>
       
