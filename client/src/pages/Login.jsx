@@ -34,7 +34,7 @@ export default function Login() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-zinc-900 px-4">
       <Card className="w-full max-w-md shadow-xl animate-fade">
         <CardHeader>
-          <CardTitle className="text-center text-2xl font-bold">Log In(demoaccounts: admin: email-admin@gmail.com,password-admin)</CardTitle>
+          <CardTitle className="text-center text-2xl font-bold">LogIn(demoaccount: admin: email-admin@gmail.com,password-admin and user: email-user@gmail.com ,password-user)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Input
@@ -57,7 +57,7 @@ export default function Login() {
         </CardFooter>
 
         <p className="text-sm text-center text-zinc-600 dark:text-zinc-300 mt-4">
-            Don't have an account?{" "}
+            Don't have an account yet?{" "}
             <Link to="/signup" className="text-blue-600 hover:underline">
                 Sign Up 
             </Link>
