@@ -1,7 +1,7 @@
 admin credentials:
 email:admin@gmail.com
-password:admin1234
+password:admin
 
 user credentials:
 email:user@gmail.com
-password:user1234
+password:user
