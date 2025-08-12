@@ -34,7 +34,7 @@ export default function Login() {
     <div className="flex min-h-screen items-center justify-center bg-gray-100 dark:bg-zinc-900 px-4">
       <Card className="w-full max-w-md shadow-xl animate-fade">
         <CardHeader>
-          <CardTitle className="text-center text-2xl font-bold">Log In</CardTitle>
+          <CardTitle className="text-center text-2xl font-bold">Log In(demoaccounts: admin: email-admin@gmail.com,password-admin)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <Input
